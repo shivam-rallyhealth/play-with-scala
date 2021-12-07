@@ -1,0 +1,10 @@
+@* taskList1 Template File*@ @(tasks: Seq[String]) @main("Task List") {
+<h1>Hello Scala, Task List is Ready</h1>
+<ul>
+  @for(task <- tasks) {
+  <li>@task</li>
+  }
+</ul>
+
+<a href="@routes.TaskList1.logout1">Logout</a>
+}

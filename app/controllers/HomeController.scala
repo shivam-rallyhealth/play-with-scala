@@ -21,4 +21,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   def index() = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
   }
+
+  def productDetails(productType:String,productNum:Int) = Action {
+    Ok(s"Your Selected ProductType is $productType and ProductNum is $productNum")
+  }
 }

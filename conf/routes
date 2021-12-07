@@ -5,6 +5,15 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index()
+GET     /todolist                   controllers.TaskList1.taskList
+GET     /productargs                controllers.HomeController.productDetails(productType,productNum:Int)
+GET     /validatelogin1             controllers.TaskList1.validate(userName,password)
+GET     /login1                     controllers.TaskList1.login1
+GET     /logout1                    controllers.TaskList1.logout1
 
++nocsrf
+POST    /validatelogin1post         controllers.TaskList1.validatePost1
++nocsrf
+POST    /createUser1                controllers.TaskList1.createUser1
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

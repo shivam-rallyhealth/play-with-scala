@@ -1,0 +1,28 @@
+@* login Template File*@  @main("Login") {
+    <h4>Login To Application</h4>
+    <form method="get" action="validatelogin1">
+        <label>Login With Get</label>
+        <br>
+        Username: <input type="text" name="userName"></input>
+        Password: <input type="password" name="password"></input>
+        <input type="submit"></input>
+    </form>
+    <br>
+    <form method="post" action="@routes.TaskList1.validatePost1">
+        <label>Login With Post</label>
+        <br>
+        Username: <input type="text" name="userName"></input>
+        Password: <input type="password" name="password"></input>
+        <input type="submit"></input>
+    </form>
+
+    <br>
+    
+    <form method="post" action="@routes.TaskList1.createUser1">
+        <label>Create a new User</label>
+        <br>
+        Username: <input type="text" name="userName"></input>
+        Password: <input type="password" name="password"></input>
+        <input type="submit"></input>
+    </form>
+}
