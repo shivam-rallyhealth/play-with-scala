@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String)(content: Html)(implicit flash: Flash)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +9,7 @@
 
     </head>
     <body>
+        @flash.get("error")
         @* And here's where we render the `Html` object containing
          * the page content. *@
         @content

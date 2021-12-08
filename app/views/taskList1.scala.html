@@ -1,10 +1,24 @@
-@* taskList1 Template File*@ @(tasks: Seq[String]) @main("Task List") {
+@* taskList1 Template File*@ @(tasks: Seq[String])(implicit request: RequestHeader, flash: Flash)
+@main("Task List") {
 <h1>Hello Scala, Task List is Ready</h1>
 <ul>
-  @for(task <- tasks) {
+  @for((task,i) <- tasks.zipWithIndex) {
   <li>@task</li>
+  <form method="post" action="@routes.TaskList1.deleteTask">
+    @helper.CSRF.formField  
+    <input type="hidden" name="index" value="@i"/>
+    <input type="submit" value="Delete"/>
+  </form>
   }
 </ul>
+
+<form method="post" action="@routes.TaskList1.addTask1">
+  @helper.CSRF.formField
+  <label>Login With Post</label>
+  <br>
+  Add Task: <input type="text" name="task"></input>
+  <input type="submit"></input>
+</form>
 
 <a href="@routes.TaskList1.logout1">Logout</a>
 }

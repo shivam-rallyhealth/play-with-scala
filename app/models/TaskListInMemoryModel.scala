@@ -18,4 +18,12 @@ object TaskListInMemoryModel {
             true
         }
     }
+
+    def addUserTask(username:String,task:String) = {
+        tasks(username) = task :: tasks.get(username).getOrElse(Nil);
+    }   
+
+    def deleteTask(username:String,index:Int) = {
+        tasks(username) = tasks.get(username).get.patch(index,Nil,1);
+    }
 }
