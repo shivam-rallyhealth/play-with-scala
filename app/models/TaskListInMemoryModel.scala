@@ -26,4 +26,5 @@ object TaskListInMemoryModel {
     def deleteTask(username:String,index:Int) = {
         tasks(username) = tasks.get(username).get.patch(index,Nil,1);
     }
+    
 }

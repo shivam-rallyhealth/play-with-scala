@@ -8,6 +8,8 @@ GET     /                           controllers.HomeController.index()
 GET     /todolist                   controllers.TaskList1.taskList
 GET     /productargs                controllers.HomeController.productDetails(productType,productNum:Int)
 GET     /validatelogin1             controllers.TaskList1.validate(userName,password)
+GET     /validateForm1             controllers.TaskList1.validateLoginForm
+
 GET     /login1                     controllers.TaskList1.login1
 GET     /logout1                    controllers.TaskList1.logout1
 

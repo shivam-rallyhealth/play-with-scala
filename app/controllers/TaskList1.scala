@@ -4,10 +4,21 @@ package controllers
 import javax.inject._
 import play.api._
 import play.api.mvc._
+import play.api.data._
+import play.api.data.Forms._
 import models.TaskListInMemoryModel
 
+
+case class LoginData(userName: String, password: String)    
+
 @Singleton
-class TaskList1 @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
+class TaskList1 @Inject()(controllerComponents: MessagesControllerComponents) extends MessagesAbstractController(controllerComponents) {
+
+
+    val loginForm = Form(mapping(
+        "userName" -> text(3,10),
+        "password" -> text(3,10)
+    )(LoginData.apply)(LoginData.unapply))
 
     def validate(userName: String, password:String) = Action {
         Ok(s"Hey! $userName, you're Logged in with ${password.flatMap(element => "*")}")
@@ -28,6 +39,12 @@ class TaskList1 @Inject()(val controllerComponents: ControllerComponents) extend
         }
     }
 
+    def validateLoginForm = Action {
+        implicit request => {
+            Ok("")
+        }
+    }
+
     def createUser1 = Action {
         implicit request => {
             val postVal = request.body.asFormUrlEncoded;
@@ -45,7 +62,7 @@ class TaskList1 @Inject()(val controllerComponents: ControllerComponents) extend
     }
 
     def login1 = Action {implicit request =>
-        Ok(views.html.login1())
+        Ok(views.html.login1(loginForm))
     }
 
     def logout1 = Action {
